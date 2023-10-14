@@ -1,5 +1,6 @@
 ~~~ SQL
-SELECT * 
+SELECT
+* 
 FROM 
 sales;
 ~~~
