@@ -63,5 +63,9 @@ The analysis seeks to answer the following questions:
 1. Revenue contribution percentage by states and cities
 2. Order contribution percentage by states and cities
 3. Order contribution percentage to B2B vs. B2C
-4. Sales quantity by category 
+4. Sales quantity by category
+
+## Data Repository 
+-Access Dashboard [HERE](https://drive.google.com/file/d/1X00FXhbIpCK6ew6SnTXZW4IQ0oualBdo/view?usp=share_link)
+-Access Report [HERE](https://drive.google.com/file/d/17XuxoAvsfVAeofmKal4WQ82__sx7ahl3/view?usp=share_link)
 
