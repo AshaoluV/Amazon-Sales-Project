@@ -12,13 +12,17 @@ There are varieties of variables that will impact the outcome of this analysis:
 **Status**: status of product ordered
 
       • Pending
+
       • Cancelled
+
       • Shipped
+
       • Shipping
       
 **Fulfillment**
       
       • Amazon
+
       • Merchant
       
 **Category**: different items ordered
