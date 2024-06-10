@@ -1,8 +1,7 @@
 ~~~ SQL
 SELECT
 * 
-FROM 
-sales;
+FROM sales;
 ~~~
 
 ~~~ SQL
@@ -10,8 +9,7 @@ sales;
 SELECT 
       CAST(SUM(amount) 
       AS SIGNED)Revenue
-FROM sales
-;
+FROM sales;
 ~~~
 | Revenue  |
 |----------|
@@ -21,18 +19,17 @@ FROM sales
 /* Sales Quantity */
 SELECT 
       SUM(Qty)'Sales Quantity' 
-FROM sales
-;
+FROM sales;
 ~~~
 | Sales Quantity |
 |----------------|
 | 116649         |
+
 ~~~ SQL
 /* Total Orders */
 SELECT 
       COUNT('Order ID')'Total Orders'
-FROM sales
-;
+FROM sales;
 ~~~
 | Total Orders |
 |--------------|
@@ -43,8 +40,7 @@ FROM sales
 SELECT 
       CAST(SUM(amount)/COUNT('Order ID') 
       AS DECIMAL (7,2))'Average Order Value' 
-FROM sales
-;
+FROM sales;
 ~~~
 | Average Order Value |
 |---------------------|
@@ -55,8 +51,7 @@ FROM sales
 /* The highest product ordered by category */
 SELECT 
       MAX(category)Product 
-FROM sales
-;
+FROM sales;
 ~~~
 | Product       |
 |---------------|
@@ -70,8 +65,7 @@ FROM sales
 GROUP BY category
 ORDER BY category 
 DESC
-LIMIT 5
-;
+LIMIT 5;
 ~~~
 | Most Popular Product |
 |----------------------|
@@ -92,8 +86,7 @@ FROM sales
 WHERE MONTHNAME(date) IS NOT NULL
 GROUP BY MONTHNAME(date)
 ORDER BY Revenue
-DESC
-;
+DESC;
 ~~~ 
 | Month | Revenue  |
 |-------|----------|
@@ -112,8 +105,7 @@ WHERE MONTHNAME(date) IS NOT NULL
 GROUP BY MONTHNAME(date)
 ORDER BY Revenue 
 DESC
-LIMIT 1
-;
+LIMIT 1;
 ~~~
 | Month | Revenue  |
 |-------|----------|
@@ -129,8 +121,7 @@ FROM sales
 WHERE DAYOFMONTH(date) IS NOT NULL
 GROUP BY DAYOFMONTH(date)
 ORDER BY DAYOFMONTH(date) 
-ASC
-;
+ASC;
 ~~~
 | Days | Revenue |
 |------|---------|
@@ -177,8 +168,7 @@ WHERE DAYOFMONTH(date) IS NOT NULL
 GROUP BY DAYOFMONTH(date)
 ORDER BY Revenue 
 DESC
-LIMIT 3
-;
+LIMIT 3;
 ~~~
 | Days | Revenue |
 |------|---------|
@@ -196,8 +186,7 @@ FROM sales
 GROUP BY category
 ORDER BY Revenue 
 DESC
-LIMIT 5
-;
+LIMIT 5;
 ~~~
 | category      | Revenue     |
 |---------------|-------------|
@@ -217,8 +206,7 @@ SELECT
       AS DECIMAL(5,3))'%By Category'
 FROM sales
 GROUP BY Category
-ORDER BY Revenue DESC
-;
+ORDER BY Revenue DESC;
 ~~~
 | category      | Revenue     | %By Category |
 |---------------|-------------|--------------|
@@ -241,8 +229,7 @@ SELECT
 FROM sales
 GROUP BY size
 ORDER BY Revenue
-DESC
-;
+DESC;
 ~~~
 | size | Revenue     |
 |------|-------------|
@@ -269,8 +256,7 @@ SELECT
 FROM sales
 GROUP BY Size
 ORDER BY Revenue 
-DESC
-;
+DESC;
 ~~~
 | size | Revenue     | %By Size |
 |------|-------------|----------|
@@ -295,8 +281,7 @@ SELECT
 GROUP BY `ship-city`
 ORDER BY Revenue 
 DESC
-LIMIT 5
-;
+LIMIT 5;
 ~~~
 | ship-city | Revenue |
 |-----------|---------|
@@ -318,8 +303,7 @@ FROM sales
 GROUP BY `ship-city`
 ORDER BY Revenue
 DESC
-LIMIT 10
-;
+LIMIT 10;
 ~~~
 | ship-city | Revenue | %By Ship-city |
 |-----------|---------|---------------|
@@ -343,8 +327,7 @@ FROM sales
 GROUP BY `ship-state`
 ORDER BY `Count Order ID`
 DESC
-LIMIT 10
-;
+LIMIT 10;
 ~~~
 | ship-state     | Count Order ID |
 |----------------|----------------|
@@ -370,8 +353,7 @@ FROM sales
 GROUP BY `ship-state`
 ORDER BY `Count Order ID` 
 DESC
-LIMIT 10 
-;
+LIMIT 10;
 ~~~
 | ship-state     | Count Order ID | %Order Contribution |
 |----------------|----------------|---------------------|
@@ -394,8 +376,7 @@ SELECT
 GROUP BY `ship-state`
 ORDER BY Revenue
 DESC
-LIMIT 10
-;
+LIMIT 10;
 ~~~
 | ship-state     | Revenue  |
 |----------------|----------|
@@ -422,8 +403,7 @@ FROM sales
 GROUP BY `ship-state`
 ORDER BY Revenue
 DESC
-LIMIT 10
-;
+LIMIT 10;
 ~~~
 | ship-state     | Revenue  | %By Ship-state |
 |----------------|----------|----------------|
@@ -443,8 +423,7 @@ LIMIT 10
 SELECT
       * 
 FROM sales 
-WHERE  `Status`= 'Cancelled'
-;
+WHERE  `Status`= 'Cancelled';
 ~~~
 
 ~~~ SQL
@@ -455,8 +434,7 @@ SELECT
 FROM sales
 GROUP BY `Status`
 ORDER BY `Cancelled-Order`
-DESC
-;
+DESC;
 ~~~
 | Status                        | Cancelled-Order |
 |-------------------------------|-----------------|
@@ -479,8 +457,7 @@ DESC
 SELECT
       * 
 FROM sales
-WHERE `B2B`='TRUE'
-;
+WHERE `B2B`='TRUE';
 ~~~
 
 ~~~ SQL
@@ -497,8 +474,7 @@ SELECT
 FROM sales
 WHERE `B2B` IS NOT NULL
 GROUP BY `B2B`
-ORDER BY `B2B`
-;
+ORDER BY `B2B`;
 ~~~
 | B2B   | Count B2B |
 |-------|-----------|
@@ -512,8 +488,7 @@ SELECT
       COUNT('Order ID')'Order Fulfilment'
 FROM sales
 GROUP BY Fulfilment
-ORDER BY Fulfilment
-;
+ORDER BY Fulfilment;
 ~~~
 | Fulfilment | Order Fulfilment |
 |------------|------------------|
@@ -529,8 +504,7 @@ SELECT
       AS DECIMAL(4,2))'%Of Orders Fulfilled'
 FROM sales
 GROUP BY Fulfilment
-ORDER BY Fulfilment
-;
+ORDER BY Fulfilment;
 ~~~
 | Fulfilment | Order Fulfilment | %Of Orders Fulfilled |
 |------------|------------------|----------------------|
@@ -545,8 +519,7 @@ SELECT
 	  CAST((COUNT(B2B)*100)/(SELECT COUNT('Order ID')FROM sales) 
       AS DECIMAL(4,2))'%Distribution Of B2B'
 FROM sales
-GROUP BY B2B
-;
+GROUP BY B2B;
 ~~~
 | B2B   | Distribution Of B2B | %Distribution Of B2B |
 |-------|---------------------|----------------------|
@@ -557,8 +530,7 @@ GROUP BY B2B
 /* Average Quantity Of Product Ordered */ 
 SELECT
       (SUM(Qty)/COUNT(`Order ID`))'Average Quantity Of Product Ordered'
-FROM sales
-;
+FROM sales;
 ~~~
 | Average Quantity Of Product Ordered |
 |-------------------------------------|
@@ -568,8 +540,7 @@ FROM sales
 /* The most Common Promotion */
 SELECT 
       MAX(`promotion-ids`)'Common Promotion'
-FROM sales
-;
+FROM sales;
 ~~~
 | Common Promotion          |
 |---------------------------|
@@ -584,8 +555,7 @@ FROM sales
 GROUP BY `promotion-ids`
 ORDER BY Revenue
 DESC
-LIMIT 2
-;
+LIMIT 2;
 ~~~
 | promotion-ids                                | Revenue  |
 |----------------------------------------------|----------|
@@ -602,8 +572,7 @@ FROM sales
 WHERE QUARTER(date)='2'
 GROUP BY MONTHNAME(date)
 ORDER BY MONTHNAME(date)
-DESC
-;
+DESC;
 ~~~
 | Quater | Revenue  |
 |--------|----------|
@@ -617,8 +586,7 @@ SELECT
       category,
       count(`status` = 'Cancelled')'Cancelled Order'
 FROM sales
-GROUP BY Category
-;
+GROUP BY Category;
 ~~~
 | category      | Cancelled Order |
 |---------------|-----------------|
@@ -640,8 +608,7 @@ SELECT
       CAST(COUNT(`status` = 'Cancelled') * 100/(SELECT COUNT(`Order ID`) FROM sales) 
       AS DECIMAL(5,3))'Cancelled Or Return Rate'  
 FROM sales
-GROUP BY category
-;
+GROUP BY category;
 ~~~
 | category      | Cancelled Order | Cancelled Or Return Rate |
 |---------------|-----------------|--------------------------|
@@ -666,8 +633,7 @@ SELECT
       report.size,
       report.color
 FROM sales 
-JOIN report ON sales.index=report.index
-;
+JOIN report ON sales.index=report.index;
 ~~~
 ~~~ SQL
 /* Creating View For The New Table (Salesview) */
@@ -681,15 +647,13 @@ SELECT
       report.category,
       report.size,
       report.color
-FROM sales JOIN report ON sales.index=report.index
-;
+FROM sales JOIN report ON sales.index=report.index;
 ~~~
 
 ~~~ SQL
 SELECT 
 * 
-FROM Salesview
-;
+FROM Salesview;
 ~~~
 
 ~~~ SQL
@@ -725,8 +689,7 @@ SELECT
 FROM salesview
 GROUP BY category
 ORDER BY Color
-DESC
-;
+DESC;
 ~~~
 | category             | Color     |
 |----------------------|-----------|
@@ -756,8 +719,7 @@ DESC
 /* Most Popular Color */
 SELECT 
       MAX(color)
-FROM salesview
-;
+FROM salesview;
 
 ~~~
 | MAX(color) |
