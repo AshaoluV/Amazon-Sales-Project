@@ -159,7 +159,7 @@ ASC;
 ~~~ SQL
 /* Peak Revenue By Days */
 SELECT 
-	  DAYOFMONTH(date)Days,
+      DAYOFMONTH(date)Days,
       CAST(SUM(amount) 
       AS SIGNED)Revenue 
 FROM sales
