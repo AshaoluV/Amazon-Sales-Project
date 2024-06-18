@@ -1,6 +1,5 @@
 ~~~ SQL
-SELECT
-* 
+SELECT * 
 FROM sales;
 ~~~
 
@@ -420,8 +419,7 @@ LIMIT 10;
 
 ~~~ SQL
 /* Shows the Cancelled Ordered */
-SELECT
-      * 
+SELECT * 
 FROM sales 
 WHERE  `Status`= 'Cancelled';
 ~~~
@@ -454,15 +452,14 @@ DESC;
 
 ~~~ SQL
 /* To Check B2B and B2C Customers */
-SELECT
-      * 
+SELECT * 
 FROM sales
 WHERE `B2B`='TRUE';
 ~~~
 
 ~~~ SQL
-SELECT
-      * FROM sales 
+SELECT *
+FROM sales 
 WHERE `B2B`='FALSE';
 ~~~
 
@@ -484,7 +481,7 @@ ORDER BY `B2B`;
 ~~~ SQL
 /* Orders Fulfilment */
 SELECT
-	  Fulfilment,
+      Fulfilment,
       COUNT('Order ID')'Order Fulfilment'
 FROM sales
 GROUP BY Fulfilment
@@ -625,7 +622,7 @@ GROUP BY category;
 ~~~ SQL
 /* Joining Tables To Check Other Products Category & Color */
 SELECT
-	  sales.index,
+      sales.index,
       sales.`Order ID`,
       sales.Date,
       report.stock,
@@ -637,7 +634,7 @@ JOIN report ON sales.index=report.index;
 ~~~
 ~~~ SQL
 /* Creating View For The New Table (Salesview) */
-CREATE VIEW Salesview 
+CREATE VIEW Salesview
 AS 
 SELECT 
       sales.index,
@@ -651,8 +648,7 @@ FROM sales JOIN report ON sales.index=report.index;
 ~~~
 
 ~~~ SQL
-SELECT 
-* 
+SELECT * 
 FROM Salesview;
 ~~~
 
